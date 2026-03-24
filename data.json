@@ -42,12 +42,7 @@
           "id": "prog1",
           "nome": "Programação de Computadores",
           "professor": "Sandino",
-          "materiais": [
-            { "nome": "Slides Aula 01 - Introdução", "url": "#", "tipo": "PDF", "categoria": "Aulas" },
-            { "nome": "Slides Aula 02 - Variáveis", "url": "#", "tipo": "PDF", "categoria": "Aulas" },
-            { "nome": "Lista de Exercícios 01", "url": "#", "tipo": "PDF", "categoria": "Listas" },
-            { "nome": "Exercícios de Lógica", "url": "#", "tipo": "DOCX", "categoria": "Listas" }
-          ],
+          "materiais": [],
           "resumos": "",
           "status": "Em andamento"
         },
@@ -92,7 +87,16 @@
           "id": "fmc",
           "nome": "Filosofia e Metodologia Científica",
           "professor": "Rafael Vital",
-          "materiais": [],
+          "materiais": [
+            { "nome": "O Pesquisador e a Comunicação Científica", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072878465155207/O_Pesquisador_e_a_Comunicacao_Cientifica.docx?ex=69c42cb8&is=69c2db38&hm=f265606ad14b110d87040b50a9b14910f046c43c44cd3574e04ccbdffa927afd&", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "Tipos de Conhecimento", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072878716944516/Tipos_de_Conhecimento.docx?ex=69c42cb8&is=69c2db38&hm=147b4b543df03fd6a31a0dfdc4270513e329677a9b132a13d9d190c3d39220b8&", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "A Filosofia e a Metodologia da Pesquisa Científica", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072878980923412/A_Filosofia_e_a_Metodologia_da_Pesquisa_Cientifica.docx?ex=69c42cb8&is=69c2db38&hm=6c47eb1d000852c66ad5d141058ff2e2e5b5fcf1fd5b41efe7b4a58c7040989e&", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "Atividade em Grupo", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072879258009682/Atividade_em_Grupo.docx?ex=69c42cb8&is=69c2db38&hm=a1589681d1996301df0540ea0a1ea7e493e7f1c9e1b8c77d22d818da03b6da7e&", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "Linha do Tempo", "url": "https://media.discordapp.net/attachments/1486059603299930142/1486072878301450250/LINHA_DO_TEMPO_DA_FILOSOFIA.jpg?ex=69c42cb8&is=69c2db38&hm=1d66838f0fc1d3fc97c24e76a8de9e06b8e62f9f35274cc930ddf357f4566621&=&format=webp", "tipo": "JPG", "categoria": "Aula 1" },
+            { "nome": "A PESQUISA E SUAS CLASSIFICAÇÕES", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486075035612348498/A_PESQUISA_E_SUAS_CLASSIFICACOES.docx?ex=69c42eba&is=69c2dd3a&hm=3a8016d0a31cd753a903255f70c1745e12f43ba3fe06834ed84a067fc6330b77&", "tipo": "DOCX", "categoria": "Aula 2" },
+            { "nome": "Métodos Científicos", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486075245906624573/Metodos_Cientificos.pdf?ex=69c42eec&is=69c2dd6c&hm=9ce641ffdd37c41ca7affb91342da2c1571962b5eafec21aef31654d975af475&", "tipo": "PDF", "categoria": "Aula 3" },
+            { "nome": "Etapas da Pesquisa Científica", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486075291859288185/AULA_4_Etapas_da_Pesquisa_Cientifica.docx?ex=69c42ef7&is=69c2dd77&hm=739989e178b62763da7f127d23f51afbaf45babd157ebe4c01e6a60073303435&", "tipo": "DOCX", "categoria": "Aula 4" }
+          ],
           "resumos": "",
           "status": "Em andamento"
         }
