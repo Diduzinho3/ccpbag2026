@@ -23,9 +23,9 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#avisos">Avisos</a></li>
                 <li><a href="#horario">Horário</a></li>
-                <li><a href="#comunidade">Comunidade</a></li>
                 <li><a href="#academico">Acadêmico</a></li>
                 <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#comunidade">Comunidade</a></li>
                 <li><a href="#links">Links</a></li>
             </ul>
         </div>
@@ -89,17 +89,6 @@
             </div>
         </section>
 
-        <!-- Comunidade -->
-        <section id="comunidade" class="section">
-            <div class="section-header">
-                <h2><i class="ph ph-users-three"></i> Comunidade</h2>
-                <p>Nossos canais oficiais de comunicação e colaboração.</p>
-            </div>
-            <div id="comunidade-container" class="grid-cards">
-                <!-- Carregado via JS -->
-            </div>
-        </section>
-
         <!-- Acadêmico -->
         <section id="academico" class="section">
             <div class="section-header">
@@ -118,6 +107,17 @@
                 <p>Datas de provas, entregas de trabalhos e eventos importantes.</p>
             </div>
             <div id="agenda-container" class="list-container glass">
+                <!-- Carregado via JS -->
+            </div>
+        </section>
+
+        <!-- Comunidade -->
+        <section id="comunidade" class="section">
+            <div class="section-header">
+                <h2><i class="ph ph-users-three"></i> Comunidade</h2>
+                <p>Nossos canais oficiais de comunicação e colaboração.</p>
+            </div>
+            <div id="comunidade-container" class="grid-cards">
                 <!-- Carregado via JS -->
             </div>
         </section>
@@ -160,6 +160,20 @@
                 </div>
                 <div id="materials-list" class="grid-sections">
                     <!-- Carregado via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Avisos (Complexos) -->
+        <div id="aviso-modal" class="modal">
+            <div class="modal-content glass">
+                <div class="modal-header">
+                    <h2 id="aviso-modal-title"></h2>
+                    <button class="close-modal" onclick="closeAvisoModal()"><i class="ph ph-x"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div id="aviso-modal-meta" class="meta" style="margin-bottom: 20px;"></div>
+                    <div id="aviso-modal-content" style="line-height: 1.8; color: var(--text-secondary); white-space: pre-wrap;"></div>
                 </div>
             </div>
         </div>

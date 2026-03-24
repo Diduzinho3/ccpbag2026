@@ -4,6 +4,16 @@
       "id": 1,
       "titulo": "🚀 Bem-vindos à CC 2026/1 - Barra do Garças",
       "conteudo": "Este é o seu novo hub central. Tudo o que você precisa para sobreviver ao curso está aqui.",
+      "descricao_longa": "Seja muito bem-vindo à turma de Ciência da Computação 2026/1 do campus Araguaia (UFMT/CUA). Este portal foi criado para centralizar todas as nossas necessidades acadêmicas, desde horários de aula até materiais de estudo e grupos de comunicação.\n\nAqui você encontrará:\n- Horários atualizados em tempo real.\n- Materiais de todas as disciplinas organizados por semestre.\n- Links diretos para nossos grupos de WhatsApp e servidor do Discord.\n- Agenda de provas e trabalhos.\n\nSinta-se à vontade para explorar e sugerir melhorias!",
+      "data": "2026-03-24",
+      "categoria": "Geral"
+    },
+
+    {
+      "id": 2,
+      "titulo": "🎓 Inscrições abertas para o Programa de Tutoria da UFMT — 2026/1",
+      "conteudo": "O Programa de Tutoria oferece aulas de apoio ministradas por Alunos Tutores, com supervisão de docentes, para ajudar você a avançar nos estudos e na formação profissional.",
+      "descricao_longa": "Quer reforçar seus conhecimentos em disciplinas essenciais para sua trajetória acadêmica?\nO Programa de Tutoria oferece aulas de apoio ministradas por Alunos Tutores, com supervisão de docentes, para ajudar você a avançar nos estudos e na formação profissional.\n\n📅 Início das turmas: 30 de março de 2026\n📍 Campi: Araguaia | Cuiabá | Sinop | Várzea Grande\n📘 Áreas contempladas: Matemática, Física, Línguas Estrangeiras, Climatologia e muito mais!\n\n📝 Inscrições até 29 de março de 2026\n🔗 Aponte a câmera do seu celular para o QR Code da última imagem e acesse o formulário de inscrição.\n\n📱 (65) 3313-7385\n📧 tutoria.proeg@ufmt.br\n\nhttps://www.instagram.com/p/DWRqBEODqJP/?igsh=aTV2Nmpqd29ueHh2",
       "data": "2026-03-24",
       "categoria": "Geral"
     }
@@ -120,9 +130,9 @@
       "icone": "ph-student",
       "cor": "#3ba55c",
       "links": [
-        { "nome": "Portal Acadêmico", "url": "https://portal.univ.edu", "desc": "Consulta de notas, faltas e histórico." },
-        { "nome": "Moodle / AVA", "url": "https://ava.univ.edu", "desc": "Ambiente Virtual de Aprendizagem." },
-        { "nome": "Biblioteca Digital", "url": "https://bib.univ.edu", "desc": "Acesso a acervo de livros e artigos." },
+        { "nome": "Portal de Sistemas", "url": "https://sistemas.ufmt.br/ufmt.portalsistemas", "desc": "Acesso a diversas ferramentas e serviços." },
+        { "nome": "Site do Curso", "url": "https://computacao.cua.ufmt.br/", "desc": "Site oficial do curso de Computação." },
+        { "nome": "Biblioteca Digital", "url": "www.biblioteca.ufmt.br", "desc": "Acesso a acervo de livros e artigos." },
         { "nome": "Programa de Tutoria 2026/1", "url": "https://docs.google.com/forms/d/e/1FAIpQLScXhC_SeihADbJyRtYt1mc03d7rMUSh2P64fM7obvJ3fyWkiA/viewform?usp=dialog", "desc": "Suporte acadêmico e orientação." }
       ]
     },
@@ -132,8 +142,7 @@
       "cor": "#faa61a",
       "links": [
         { "nome": "MDN Web Docs", "url": "https://developer.mozilla.org/", "desc": "Documentação completa para web." },
-        { "nome": "Python Docs", "url": "https://docs.python.org/", "desc": "Guia oficial da linguagem Python." },
-        { "nome": "Overleaf", "url": "https://www.overleaf.com/", "desc": "Editor LaTeX online colaborativo." }
+        { "nome": "Python Docs", "url": "https://docs.python.org/", "desc": "Guia oficial da linguagem Python." }
       ]
     }
   ],

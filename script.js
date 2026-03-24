@@ -5,6 +5,7 @@
 
 let allLinks = []; // Store links globally for filtering
 let academicData = []; // Store academic data for materials modal
+let avisosData = []; // Store avisos for detail modal
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
@@ -21,6 +22,7 @@ async function fetchData() {
         
         allLinks = data.links_uteis; // Store for search
         academicData = data.academico; // Store for modal
+        avisosData = data.avisos; // Store for modal
         
         renderAvisos(data.avisos);
         renderComunidade(data.comunidade);
@@ -70,16 +72,47 @@ function renderAvisos(avisos) {
         container.innerHTML = '<p class="empty-state">Nenhum aviso no momento.</p>';
         return;
     }
-    container.innerHTML = avisos.map(aviso => `
-        <div class="card glass">
-            <span class="badge">${aviso.categoria}</span>
-            <h3>${aviso.titulo}</h3>
-            <p>${aviso.conteudo}</p>
-            <div class="meta">
-                <span><i class="ph ph-calendar"></i> ${formatDate(aviso.data)}</span>
+
+    // Ordenar por ID decrescente (mais novos primeiro)
+    const avisosOrdenados = [...avisos].sort((a, b) => b.id - a.id);
+
+    container.innerHTML = avisosOrdenados.map(aviso => {
+        const hasMore = aviso.descricao_longa && aviso.descricao_longa.trim() !== "";
+        return `
+            <div class="card glass">
+                <span class="badge">${aviso.categoria}</span>
+                <h3>${aviso.titulo}</h3>
+                <p>${aviso.conteudo}</p>
+                <div class="meta" style="margin-top: auto; flex-direction: column; align-items: flex-start; gap: 12px;">
+                    <span><i class="ph ph-calendar"></i> ${formatDate(aviso.data)}</span>
+                    ${hasMore ? `<button class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 0.85rem;" onclick="openAvisoModal(${aviso.id})"><i class="ph ph-plus-circle"></i> Saiba mais</button>` : ''}
+                </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
+}
+
+function openAvisoModal(avisoId) {
+    const modal = document.getElementById('aviso-modal');
+    const title = document.getElementById('aviso-modal-title');
+    const meta = document.getElementById('aviso-modal-meta');
+    const content = document.getElementById('aviso-modal-content');
+    
+    const aviso = avisosData.find(a => a.id === avisoId);
+    if (!aviso) return;
+
+    title.textContent = aviso.titulo;
+    meta.innerHTML = `<span><i class="ph ph-calendar"></i> ${formatDate(aviso.data)}</span> • <span class="badge">${aviso.categoria}</span>`;
+    content.textContent = aviso.descricao_longa;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAvisoModal() {
+    const modal = document.getElementById('aviso-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
 }
 
 function renderComunidade(canais) {
@@ -195,20 +228,23 @@ function closeMaterialsModal() {
 function setupModal() {
     const whatsappModal = document.getElementById('whatsapp-modal');
     const materialsModal = document.getElementById('materials-modal');
+    const avisoModal = document.getElementById('aviso-modal');
     const closeBtns = document.querySelectorAll('.close-modal');
     
     closeBtns.forEach(btn => {
         btn.onclick = () => {
             whatsappModal.classList.remove('active');
             materialsModal.classList.remove('active');
+            avisoModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         };
     });
     
     window.onclick = (event) => {
-        if (event.target == whatsappModal || event.target == materialsModal) {
+        if (event.target == whatsappModal || event.target == materialsModal || event.target == avisoModal) {
             whatsappModal.classList.remove('active');
             materialsModal.classList.remove('active');
+            avisoModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
     };

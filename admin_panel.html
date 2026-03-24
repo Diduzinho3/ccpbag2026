@@ -71,39 +71,130 @@
 <body class="dark-theme">
     <div class="admin-container glass">
         <a href="index.html" class="back-link"><i class="ph ph-arrow-left"></i> Voltar ao site</a>
-        <h1>Gerador de JSON de Material</h1>
-        <p style="color: var(--text-secondary); margin-bottom: 30px;">Preencha os dados abaixo para gerar o código pronto para o <code>data.json</code>.</p>
+        
+        <div style="display: flex; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px;">
+            <button onclick="switchTab('material')" id="tab-material" class="btn btn-secondary" style="background: none; border: none; opacity: 1;">Material</button>
+            <button onclick="switchTab('aviso')" id="tab-aviso" class="btn btn-secondary" style="background: none; border: none; opacity: 0.5;">Aviso</button>
+            <button onclick="switchTab('agenda')" id="tab-agenda" class="btn btn-secondary" style="background: none; border: none; opacity: 0.5;">Agenda</button>
+        </div>
 
-        <form id="material-form">
-            <div class="form-group">
-                <label>Nome do Material</label>
-                <input type="text" id="mat-nome" placeholder="Ex: Slides Aula 05 - Grafos" required>
-            </div>
-            <div class="form-group">
-                <label>Link (URL)</label>
-                <input type="url" id="mat-url" placeholder="https://cdn.discordapp.com/..." required>
-            </div>
-            <div class="grid-cards" style="grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0;">
+        <div id="section-material">
+            <h1>Gerador de JSON de Material</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Preencha os dados abaixo para gerar o código pronto para o <code>data.json</code>.</p>
+
+            <form id="material-form">
                 <div class="form-group">
-                    <label>Tipo de Arquivo</label>
-                    <select id="mat-tipo">
-                        <option value="PDF">PDF</option>
-                        <option value="DOCX">DOCX</option>
-                        <option value="PPTX">PPTX</option>
-                        <option value="ZIP">ZIP</option>
-                        <option value="LINK">Link Externo</option>
+                    <label>Nome do Material</label>
+                    <input type="text" id="mat-nome" placeholder="Ex: Slides Aula 05 - Grafos" required>
+                </div>
+                <div class="form-group">
+                    <label>Link (URL)</label>
+                    <input type="url" id="mat-url" placeholder="https://cdn.discordapp.com/..." required>
+                </div>
+                <div class="grid-cards" style="grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0;">
+                    <div class="form-group">
+                        <label>Tipo de Arquivo</label>
+                        <select id="mat-tipo">
+                            <option value="PDF">PDF</option>
+                            <option value="DOCX">DOCX</option>
+                            <option value="PPTX">PPTX</option>
+                            <option value="ZIP">ZIP</option>
+                            <option value="LINK">Link Externo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoria (Pasta)</label>
+                        <input type="text" id="mat-cat" placeholder="Ex: Aulas, Listas, Provas" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">
+                    <i class="ph ph-code"></i> Gerar Bloco JSON
+                </button>
+            </form>
+        </div>
+
+        <div id="section-aviso" style="display: none;">
+            <h1>Gerador de JSON de Aviso</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Crie avisos simples ou complexos para o hub.</p>
+
+            <form id="aviso-form">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="avi-titulo" placeholder="Ex: 📅 Prova de Cálculo" required>
+                </div>
+                <div class="form-group">
+                    <label style="display: flex; justify-content: space-between;">
+                        Resumo (O que aparece no card)
+                        <span id="char-counter" style="font-size: 0.75rem; opacity: 0.6;">0/150</span>
+                    </label>
+                    <textarea id="avi-conteudo" rows="2" placeholder="Breve descrição do aviso..." maxlength="150" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Descrição Completa (Opcional - Ativa o 'Saiba Mais')</label>
+                    <textarea id="avi-longa" rows="5" placeholder="Texto detalhado que aparecerá no modal..."></textarea>
+                </div>
+                <div class="grid-cards" style="grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0;">
+                    <div class="form-group">
+                        <label>Categoria</label>
+                        <select id="avi-cat">
+                            <option value="Geral">Geral</option>
+                            <option value="Prova">Prova</option>
+                            <option value="Trabalho">Trabalho</option>
+                            <option value="Evento">Evento</option>
+                            <option value="Urgente">Urgente</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Data</label>
+                        <input type="date" id="avi-data" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">
+                    <i class="ph ph-megaphone"></i> Gerar Bloco JSON
+                </button>
+            </form>
+        </div>
+
+        <div id="section-agenda" style="display: none;">
+            <h1>Gerador de JSON de Agenda</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Crie eventos, provas e trabalhos para a agenda da turma.</p>
+
+            <form id="agenda-form">
+                <div class="form-group">
+                    <label>Nome do Evento</label>
+                    <input type="text" id="age-evento" placeholder="Ex: Prova de Cálculo I" required>
+                </div>
+                <div class="grid-cards" style="grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 0;">
+                    <div class="form-group">
+                        <label>Data</label>
+                        <input type="date" id="age-data" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Horário</label>
+                        <input type="text" id="age-hora" placeholder="Ex: 14:00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Local</label>
+                    <input type="text" id="age-local" placeholder="Ex: Sala 206 / Moodle" required>
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Evento</label>
+                    <select id="age-tipo">
+                        <option value="Prova">Prova</option>
+                        <option value="Trabalho">Trabalho</option>
+                        <option value="Evento">Evento</option>
+                        <option value="Feriado">Feriado</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Categoria (Pasta)</label>
-                    <input type="text" id="mat-cat" placeholder="Ex: Aulas, Listas, Provas" required>
-                </div>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">
-                <i class="ph ph-code"></i> Gerar Bloco JSON
-            </button>
-        </form>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 20px;">
+                    <i class="ph ph-calendar-plus"></i> Gerar Bloco JSON
+                </button>
+            </form>
+        </div>
 
         <div class="output-container" id="output-box" style="display: none;">
             <button class="btn btn-secondary copy-btn" id="copy-btn">Copiar</button>
@@ -115,28 +206,87 @@
     </div>
 
     <script>
-        const form = document.getElementById('material-form');
+        const materialForm = document.getElementById('material-form');
+        const avisoForm = document.getElementById('aviso-form');
+        const agendaForm = document.getElementById('agenda-form');
         const outputBox = document.getElementById('output-box');
         const outputPre = document.getElementById('json-output');
         const copyBtn = document.getElementById('copy-btn');
+        const charCounter = document.getElementById('char-counter');
+        const aviConteudo = document.getElementById('avi-conteudo');
 
-        form.onsubmit = (e) => {
-            e.preventDefault();
+        let nextAvisoId = 1;
+
+        // Buscar próximo ID de aviso ao carregar
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => {
+                if (data.avisos && data.avisos.length > 0) {
+                    const ids = data.avisos.map(a => a.id);
+                    nextAvisoId = Math.max(...ids) + 1;
+                }
+            })
+            .catch(err => console.error("Erro ao buscar próximo ID:", err));
+
+        // Contador de caracteres
+        aviConteudo.addEventListener('input', () => {
+            charCounter.textContent = `${aviConteudo.value.length}/150`;
+        });
+
+        function switchTab(tab) {
+            document.getElementById('section-material').style.display = tab === 'material' ? 'block' : 'none';
+            document.getElementById('section-aviso').style.display = tab === 'aviso' ? 'block' : 'none';
+            document.getElementById('section-agenda').style.display = tab === 'agenda' ? 'block' : 'none';
             
+            document.getElementById('tab-material').style.opacity = tab === 'material' ? '1' : '0.5';
+            document.getElementById('tab-aviso').style.opacity = tab === 'aviso' ? '1' : '0.5';
+            document.getElementById('tab-agenda').style.opacity = tab === 'agenda' ? '1' : '0.5';
+            
+            outputBox.style.display = 'none';
+        }
+
+        materialForm.onsubmit = (e) => {
+            e.preventDefault();
             const material = {
                 nome: document.getElementById('mat-nome').value,
                 url: document.getElementById('mat-url').value,
                 tipo: document.getElementById('mat-tipo').value,
                 categoria: document.getElementById('mat-cat').value
             };
-
-            const jsonString = JSON.stringify(material);
-            outputPre.textContent = jsonString + ",";
-            outputBox.style.display = 'block';
-            
-            // Scroll suave até o resultado
-            outputBox.scrollIntoView({ behavior: 'smooth' });
+            showOutput(material);
         };
+
+        avisoForm.onsubmit = (e) => {
+            e.preventDefault();
+            const aviso = {
+                id: nextAvisoId,
+                titulo: document.getElementById('avi-titulo').value,
+                conteudo: document.getElementById('avi-conteudo').value,
+                descricao_longa: document.getElementById('avi-longa').value,
+                data: document.getElementById('avi-data').value,
+                categoria: document.getElementById('avi-cat').value
+            };
+            showOutput(aviso);
+            nextAvisoId++; // Incrementar para o próximo se o usuário criar vários sem recarregar
+        };
+
+        agendaForm.onsubmit = (e) => {
+            e.preventDefault();
+            const agenda = {
+                evento: document.getElementById('age-evento').value,
+                data: document.getElementById('age-data').value,
+                horario: document.getElementById('age-hora').value,
+                local: document.getElementById('age-local').value,
+                tipo: document.getElementById('age-tipo').value
+            };
+            showOutput(agenda);
+        };
+
+        function showOutput(obj) {
+            outputPre.textContent = JSON.stringify(obj, null, 2) + ",";
+            outputBox.style.display = 'block';
+            outputBox.scrollIntoView({ behavior: 'smooth' });
+        }
 
         copyBtn.onclick = () => {
             navigator.clipboard.writeText(outputPre.textContent);
