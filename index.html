@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC 2026/1 - Barra do Garças | Hub da Turma</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <i class="ph ph-code"></i>
+                <span>CC 2026/1</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#avisos">Avisos</a></li>
+                <li><a href="#horario">Horário</a></li>
+                <li><a href="#comunidade">Comunidade</a></li>
+                <li><a href="#academico">Acadêmico</a></li>
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#links">Links</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>CCP <span class="gradient-text">2026/1</span></h1>
+                <p>Organização, materiais e comunidade para a turma de Ciência da Computação de Barra do Garças. Tudo o que você precisa em um só lugar.</p>
+                <div class="hero-btns">
+                    <a href="#academico" class="btn btn-primary">
+                        <i class="ph ph-books"></i>
+                        Ver Matérias
+                    </a>
+                    <a href="#comunidade" class="btn btn-secondary">
+                        <i class="ph ph-discord-logo"></i>
+                        Comunidade
+                    </a>
+                </div>
+                <div class="weather-widget glass">
+                    <div class="weather-info">
+                        <i class="ph ph-thermometer-simple"></i>
+                        <span>Barra do Garças: 28°C</span>
+                    </div>
+                    <div class="weather-info">
+                        <i class="ph ph-clock"></i>
+                        <span id="current-time">--:--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="avisos" class="section">
+            <div class="section-header">
+                <h2><i class="ph ph-megaphone"></i> Avisos Recentes</h2>
+            </div>
+            <div id="avisos-container" class="grid-cards">
+                <!-- Carregado via JS -->
+            </div>
+        </section>
+
+        <!-- Horário da Turma -->
+        <section id="horario" class="section">
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h2><i class="ph ph-clock"></i> Horário da Turma</h2>
+                    <p>Confira a grade de aulas da semana.</p>
+                </div>
+                <a href="https://cdn.discordapp.com/attachments/1486059603299930142/1486059626620256297/Horario_Computacao_-_2026.1.pdf?ex=69c42060&is=69c2cee0&hm=3edfa6371c0fa56a8aed671202ea98d2edd6b6da654903f4fdc7e5e0dd8d340b&" target="_blank" class="btn btn-secondary">
+                    <i class="ph ph-file-pdf"></i>
+                    Baixar Horário Completo (PDF)
+                </a>
+            </div>
+            <div id="horario-container" class="grid-cards">
+                <!-- Carregado via JS -->
+            </div>
+        </section>
+
+        <!-- Comunidade -->
+        <section id="comunidade" class="section">
+            <div class="section-header">
+                <h2><i class="ph ph-users-three"></i> Comunidade</h2>
+                <p>Nossos canais oficiais de comunicação e colaboração.</p>
+            </div>
+            <div id="comunidade-container" class="grid-cards">
+                <!-- Carregado via JS -->
+            </div>
+        </section>
+
+        <!-- Acadêmico -->
+        <section id="academico" class="section">
+            <div class="section-header">
+                <h2><i class="ph ph-graduation-cap"></i> Acadêmico</h2>
+                <p>Materiais de estudo, resumos e informações das matérias por semestre.</p>
+            </div>
+            <div id="academico-container" class="accordion-list">
+                <!-- Carregado via JS -->
+            </div>
+        </section>
+
+        <!-- Agenda -->
+        <section id="agenda" class="section">
+            <div class="section-header">
+                <h2><i class="ph ph-calendar-blank"></i> Agenda da Turma</h2>
+                <p>Datas de provas, entregas de trabalhos e eventos importantes.</p>
+            </div>
+            <div id="agenda-container" class="list-container glass">
+                <!-- Carregado via JS -->
+            </div>
+        </section>
+
+        <!-- Links Úteis -->
+        <section id="links" class="section">
+            <div class="section-header">
+                <h2><i class="ph ph-link"></i> Links Úteis</h2>
+                <p>Recursos externos e ferramentas para facilitar sua vida acadêmica.</p>
+            </div>
+            
+            <div class="search-container">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" id="link-search" class="search-input" placeholder="Buscar links por nome ou descrição...">
+            </div>
+
+            <div id="links-container" class="grid-cards">
+                <!-- Carregado via JS -->
+            </div>
+        </section>
+
+        <!-- Modal WhatsApp -->
+        <div id="whatsapp-modal" class="modal">
+            <div class="modal-content glass">
+                <div class="modal-header">
+                    <h2><i class="ph ph-whatsapp-logo"></i> Grupos de WhatsApp</h2>
+                    <button class="close-modal"><i class="ph ph-x"></i></button>
+                </div>
+                <div id="whatsapp-groups-list" class="grid-cards">
+                    <!-- Carregado via JS -->
+                </div>
+            </div>
+        </div>
+        <!-- Modal Materiais -->
+        <div id="materials-modal" class="modal">
+            <div class="modal-content glass">
+                <div class="modal-header">
+                    <h2 id="materials-modal-title"><i class="ph ph-books"></i> Materiais</h2>
+                    <button class="close-modal" onclick="closeMaterialsModal()"><i class="ph ph-x"></i></button>
+                </div>
+                <div id="materials-list" class="grid-sections">
+                    <!-- Carregado via JS -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <div class="logo">
+                    <i class="ph ph-code"></i>
+                    <span>CC 2026/1</span>
+                </div>
+                <p>Desenvolvido para a turma de Ciência da Computação - UFMT/CUA.</p>
+            </div>
+            <div class="footer-links">
+                <p>&copy; 2026 Barra do Garças - MT</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+/**
+ * script.js - CC 2026/1
+ * Lógica de renderização dinâmica para o Hub da Turma
+ */
+
+let allLinks = []; // Store links globally for filtering
+let academicData = []; // Store academic data for materials modal
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchData();
+    setupModal();
+    setupClock();
+    setupSearch();
+});
+
+async function fetchData() {
+    try {
+        const response = await fetch('data.json');
+        if (!response.ok) throw new Error('Erro ao carregar dados');
+        const data = await response.json();
+        
+        allLinks = data.links_uteis; // Store for search
+        academicData = data.academico; // Store for modal
+        
+        renderAvisos(data.avisos);
+        renderComunidade(data.comunidade);
+        renderAcademico(data.academico);
+        renderAgenda(data.agenda);
+        renderHorario(data.horario);
+        renderLinks(allLinks);
+        
+        setupAccordions();
+    } catch (error) {
+        console.error('Erro:', error);
+    }
+}
+
+function setupClock() {
+    const clockElement = document.getElementById('current-time');
+    function updateTime() {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        clockElement.textContent = timeStr;
+    }
+    updateTime();
+    setInterval(updateTime, 60000);
+}
+
+function setupSearch() {
+    const searchInput = document.getElementById('link-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = allLinks.map(cat => ({
+                ...cat,
+                links: cat.links.filter(l => 
+                    l.nome.toLowerCase().includes(term) || 
+                    l.desc.toLowerCase().includes(term)
+                )
+            })).filter(cat => cat.links.length > 0);
+            
+            renderLinks(filtered);
+        });
+    }
+}
+
+function renderAvisos(avisos) {
+    const container = document.getElementById('avisos-container');
+    if (!avisos || avisos.length === 0) {
+        container.innerHTML = '<p class="empty-state">Nenhum aviso no momento.</p>';
+        return;
+    }
+    container.innerHTML = avisos.map(aviso => `
+        <div class="card glass">
+            <span class="badge">${aviso.categoria}</span>
+            <h3>${aviso.titulo}</h3>
+            <p>${aviso.conteudo}</p>
+            <div class="meta">
+                <span><i class="ph ph-calendar"></i> ${formatDate(aviso.data)}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderComunidade(canais) {
+    const container = document.getElementById('comunidade-container');
+    container.innerHTML = canais.map(canal => {
+        const isWhatsApp = canal.plataforma.toLowerCase() === 'whatsapp';
+        const isGoogle = canal.plataforma.toLowerCase() === 'google agenda';
+        const actionAttr = isWhatsApp ? `onclick="openWhatsAppModal(event, ${JSON.stringify(canal.grupos).replace(/"/g, '&quot;')})"` : '';
+        const href = isWhatsApp ? '#' : canal.link;
+
+        return `
+            <div class="card glass">
+                <i class="ph ${canal.icone}" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                <h3>${canal.plataforma}</h3>
+                <p>${canal.descricao}</p>
+                <a href="${href}" ${actionAttr} target="${isWhatsApp ? '_self' : '_blank'}" class="btn btn-secondary">
+                    ${isWhatsApp ? 'Ver Grupos' : isGoogle ? 'Ver Calendário' : 'Entrar Agora'}
+                </a>
+            </div>
+        `;
+    }).join('');
+}
+
+function openWhatsAppModal(e, grupos) {
+    e.preventDefault();
+    const modal = document.getElementById('whatsapp-modal');
+    const list = document.getElementById('whatsapp-groups-list');
+    
+    list.innerHTML = grupos.map(g => `
+        <div class="card" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);">
+            <h4>${g.nome}</h4>
+            <p>${g.desc}</p>
+            <a href="${g.link}" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Baixar <i class="ph ph-whatsapp-logo"></i> Entrar
+            </a>
+        </div>
+    `).join('');
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function openMaterialsModal(materiaId) {
+    const modal = document.getElementById('materials-modal');
+    const title = document.getElementById('materials-modal-title');
+    const list = document.getElementById('materials-list');
+    
+    let materia = null;
+    academicData.forEach(semestre => {
+        const found = semestre.materias.find(m => m.id === materiaId);
+        if (found) materia = found;
+    });
+
+    if (!materia) return;
+
+    title.innerHTML = `<i class="ph ph-books"></i> Materiais: ${materia.nome}`;
+    
+    if (!materia.materiais || materia.materiais.length === 0) {
+        list.innerHTML = '<p class="empty-state">Nenhum material disponível ainda.</p>';
+    } else {
+        // Agrupar materiais por categoria
+        const categorias = {};
+        materia.materiais.forEach(mat => {
+            const cat = mat.categoria || 'Outros';
+            if (!categorias[cat]) categorias[cat] = [];
+            categorias[cat].push(mat);
+        });
+
+        list.innerHTML = Object.keys(categorias).map(catName => `
+            <div class="accordion-item modal-accordion active">
+                <div class="accordion-header modal-accordion-header">
+                    <h4>${catName}</h4>
+                    <i class="ph ph-caret-down"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-inner" style="padding: 10px 0;">
+                        ${categorias[catName].map(mat => `
+                            <div class="link-item" style="margin-bottom: 10px; background: rgba(255,255,255,0.02);">
+                                <div class="link-info">
+                                    <span class="link-name">${mat.nome}</span>
+                                    <span class="link-desc">${mat.tipo || 'Arquivo'}</span>
+                                </div>
+                                <a href="${mat.url}" target="_blank" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">
+                                    <i class="ph ph-download-simple"></i> Baixar
+                                </a>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // Adicionar eventos para os novos acordeões do modal
+        const modalHeaders = list.querySelectorAll('.modal-accordion-header');
+        modalHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMaterialsModal() {
+    const modal = document.getElementById('materials-modal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function setupModal() {
+    const whatsappModal = document.getElementById('whatsapp-modal');
+    const materialsModal = document.getElementById('materials-modal');
+    const closeBtns = document.querySelectorAll('.close-modal');
+    
+    closeBtns.forEach(btn => {
+        btn.onclick = () => {
+            whatsappModal.classList.remove('active');
+            materialsModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+    });
+    
+    window.onclick = (event) => {
+        if (event.target == whatsappModal || event.target == materialsModal) {
+            whatsappModal.classList.remove('active');
+            materialsModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    };
+}
+
+function renderAcademico(semestres) {
+    const container = document.getElementById('academico-container');
+    container.innerHTML = semestres.map((s, index) => `
+        <div class="accordion-item glass ${index === 0 ? 'active' : ''}">
+            <div class="accordion-header">
+                <h3>${s.semestre}</h3>
+                <i class="ph ph-caret-down"></i>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-inner">
+                    <div class="grid-cards">
+                        ${s.materias.map(m => `
+                            <div class="card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);">
+                                <h4>${m.nome}</h4>
+                                <p>Prof. ${m.professor}</p>
+                                <div class="meta">
+                                    <span class="status-badge status-${m.status.toLowerCase().replace(' ', '-').replace('í', 'i')}">${m.status}</span>
+                                </div>
+                                <div style="margin-top: 15px;">
+                                    <button class="btn btn-secondary" style="width: 100%; justify-content: center; font-size: 0.8rem;" onclick="openMaterialsModal('${m.id}')">
+                                        <i class="ph ph-folder-open"></i> Ver Materiais
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderAgenda(eventos) {
+    const container = document.getElementById('agenda-container');
+    if (!eventos || eventos.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state" style="padding: 40px; text-align: center; color: var(--text-secondary);">
+                <i class="ph ph-calendar-x" style="font-size: 3rem; margin-bottom: 16px; display: block; opacity: 0.5;"></i>
+                <p>Não há eventos ou provas marcadas para os próximos dias.</p>
+            </div>
+        `;
+        return;
+    }
+    container.innerHTML = eventos.map((e, index) => {
+        const date = new Date(e.data);
+        const day = date.getDate() + 1;
+        const month = date.toLocaleString('pt-br', { month: 'short' });
+        const isNext = index === 0;
+        
+        return `
+            <div class="list-item ${isNext ? 'next-event' : ''}">
+                <div class="date-box">
+                    <span class="day">${day}</span>
+                    <span class="month">${month}</span>
+                </div>
+                <div class="event-info">
+                    <h3>${e.evento} ${isNext ? '<span class="next-badge">PRÓXIMO</span>' : ''}</h3>
+                    <p><i class="ph ph-map-pin"></i> ${e.local} • <i class="ph ph-clock"></i> ${e.horario}</p>
+                </div>
+                <div class="event-tag">
+                    <span class="badge">${e.tipo}</span>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function renderHorario(dias) {
+    const container = document.getElementById('horario-container');
+    const now = new Date();
+    const dayOfWeek = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const dayMap = { 1: "2ª Feira", 2: "3ª Feira", 3: "4ª Feira", 4: "5ª Feira", 5: "6ª Feira" };
+    const currentDayStr = dayMap[dayOfWeek];
+
+    container.innerHTML = dias.map(d => {
+        const isActive = d.dia === currentDayStr;
+        return `
+            <div class="card glass timetable-card ${isActive ? 'active-day' : ''}">
+                <h3 class="day-title">${d.dia} ${isActive ? '<span class="today-badge">HOJE</span>' : ''}</h3>
+                <div class="classes-list">
+                    ${d.aulas.map(a => `
+                        <div class="class-item">
+                            <span class="class-time">${a.hora}</span>
+                            <div class="class-details">
+                                <span class="class-name">${a.materia}</span>
+                                <span class="class-room"><i class="ph ph-door"></i> ${a.sala}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function renderLinks(categorias) {
+    const container = document.getElementById('links-container');
+    if (categorias.length === 0) {
+        container.innerHTML = '<p class="empty-state" style="grid-column: 1/-1;">Nenhum link encontrado para sua busca.</p>';
+        return;
+    }
+    container.innerHTML = categorias.map(cat => `
+        <div class="card glass link-category-card" style="border-top: 4px solid ${cat.cor};">
+            <div class="category-header">
+                <i class="ph ${cat.icone}" style="color: ${cat.cor}; font-size: 1.5rem;"></i>
+                <h3>${cat.categoria}</h3>
+            </div>
+            <div class="links-list">
+                ${cat.links.map(l => `
+                    <a href="${l.url}" target="_blank" class="link-item">
+                        <div class="link-info">
+                            <span class="link-name">${l.nome}</span>
+                            <span class="link-desc">${l.desc}</span>
+                        </div>
+                        <i class="ph ph-arrow-square-out"></i>
+                    </a>
+                `).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function setupAccordions() {
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        });
+    });
+}
+
+function formatDate(dateStr) {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+}

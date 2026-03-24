@@ -1,0 +1,175 @@
+{
+  "avisos": [
+    {
+      "id": 1,
+      "titulo": "🚀 Bem-vindos à CC 2026/1 - Barra do Garças",
+      "conteudo": "Este é o seu novo hub central. Tudo o que você precisa para sobreviver ao curso está aqui.",
+      "data": "2026-03-24",
+      "categoria": "Geral"
+    }
+  ],
+  "comunidade": [
+    {
+      "plataforma": "WhatsApp",
+      "link": "#",
+      "descricao": "Nossos grupos de comunicação rápida no WhatsApp.",
+      "icone": "ph-whatsapp-logo",
+      "grupos": [
+        { "nome": "Grupo Geral", "link": "https://chat.whatsapp.com/KrjXP3wuzH65Ci3EYmMGFw", "desc": "Avisos e conversas gerais." },
+        { "nome": "Grupo da Turma", "link": "https://chat.whatsapp.com/Gsdc9Jo0WHe5m3wE7KWOET", "desc": "Focado em tirar dúvidas e compartilhar materiais." }, 
+        { "nome": "Cálculo I", "link": "https://chat.whatsapp.com/Jlci1ZxL4qzFBk7MpLirPg", "desc": "Grupo dedicado à disciplina Cálculo Diferencial e Integral I." },
+        { "nome": "Vetores e Geometria", "link": "https://chat.whatsapp.com/BnvNK1HRyA56l8QCKIR0JD", "desc": "Grupo dedicado à disciplina de Vetores e Geometria." }
+      ]
+    },
+    {
+      "plataforma": "Discord",
+      "link": "https://discord.gg/8vrEr5DzMr",
+      "descricao": "Servidor para estudos, salas de voz e compartilhamento de materiais.",
+      "icone": "ph-discord-logo"
+    },
+    {
+      "plataforma": "Google Agenda",
+      "link": "https://calendar.google.com/calendar/u/0?cid=MzE2OTRhZjRjNWYyZTY0M2ZhMTUyMmZhOTY2NDVjOWJkNjZmYjE3NTQwOGQ3YzA4NmE0YmQ0MWVlOWNkNTJlNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t",
+      "descricao": "Onde guardamos nossas aulas e eventos de forma geral.",
+      "icone": "ph-google-logo"
+    }
+  ],
+  "academico": [
+    {
+      "semestre": "1º Semestre",
+      "materias": [
+        {
+          "id": "prog1",
+          "nome": "Programação de Computadores",
+          "professor": "Sandino",
+          "materiais": [
+            { "nome": "Slides Aula 01 - Introdução", "url": "#", "tipo": "PDF", "categoria": "Aulas" },
+            { "nome": "Slides Aula 02 - Variáveis", "url": "#", "tipo": "PDF", "categoria": "Aulas" },
+            { "nome": "Lista de Exercícios 01", "url": "#", "tipo": "PDF", "categoria": "Listas" },
+            { "nome": "Exercícios de Lógica", "url": "#", "tipo": "DOCX", "categoria": "Listas" }
+          ],
+          "resumos": "",
+          "status": "Em andamento"
+        },
+        {
+          "id": "calc1",
+          "nome": "Cálculo Diferencial e Integral I",
+          "professor": "Juan Elmer",
+          "materiais": [
+            { "nome": "Aula 1", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064774545412247/Calculo_diferencial_e_integral_I_-_JV_-_Aula_1_2026_1_CC.pdf?ex=69c4252c&is=69c2d3ac&hm=caab2e61b3c1401883cccb5895af5bc48583a471d82ad8a4a1da3f664a6573bf&", "tipo": "PDF", "categoria": "Aulas" },
+            { "nome": "Aula 2", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064774835081287/Calculo_diferencial_e_integral_I_-_JV_-_Aula_2_2026_1_CC.pdf?ex=69c4252c&is=69c2d3ac&hm=cb2a6d944e72096fb79fb23a15a83c66fd01e14165dda69073de52721b04511f&", "tipo": "PDF", "categoria": "Aulas" },
+            { "nome": "Lista 1", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064775128547488/Calculo_diferencial_e_integral_I_-_JV_Lista_01_2026_1_CC.pdf?ex=69c4252c&is=69c2d3ac&hm=acf6582206950199332a39391f6d19981249332ae87ff405bac6847146263478&", "tipo": "PDF", "categoria": "Listas" },
+            { "nome": "Lista 2", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064775392661524/Calculo_diferencial_e_integral_I_-_JV_Lista_02_2026_1_CC.pdf?ex=69c4252c&is=69c2d3ac&hm=84a03af287029ab8b398810a7e9deb73bd631ad39fec2147ada5ab6a7c895011&", "tipo": "PDF", "categoria": "Listas" }
+          ],
+          "resumos": "",
+          "status": "Em andamento"
+        },
+        {
+          "id": "vga",
+          "nome": "Vetores e Geometria Analítica",
+          "professor": "Anthony",
+          "materiais": [],
+          "resumos": "",
+          "status": "Em andamento"
+        },
+        {
+          "id": "mec",
+          "nome": "Mecânica",
+          "professor": "Ediron",
+          "materiais": [],
+          "resumos": "",
+          "status": "Em andamento"
+        },
+        {
+          "id": "ic",
+          "nome": "Introdução à Computação",
+          "professor": "Thiago",
+          "materiais": [],
+          "resumos": "",
+          "status": "Em andamento"
+        },
+        {
+          "id": "fmc",
+          "nome": "Filosofia e Metodologia Científica",
+          "professor": "Rafael Vital",
+          "materiais": [],
+          "resumos": "",
+          "status": "Em andamento"
+        }
+      ]
+    }
+  ],
+  "agenda": [],
+  "links_uteis": [
+    {
+      "categoria": "Desenvolvimento",
+      "icone": "ph-code",
+      "cor": "#5865f2",
+      "links": [
+        { "nome": "VSCode", "url": "https://code.visualstudio.com/", "desc": "O editor padrão da indústria." },
+        { "nome": "GitHub", "url": "https://github.com/", "desc": "Hospedagem de código e colaboração." },
+        { "nome": "Stack Overflow", "url": "https://stackoverflow.com/", "desc": "A maior comunidade de Q&A para devs." }
+      ]
+    },
+    {
+      "categoria": "Acadêmico",
+      "icone": "ph-student",
+      "cor": "#3ba55c",
+      "links": [
+        { "nome": "Portal Acadêmico", "url": "https://portal.univ.edu", "desc": "Consulta de notas, faltas e histórico." },
+        { "nome": "Moodle / AVA", "url": "https://ava.univ.edu", "desc": "Ambiente Virtual de Aprendizagem." },
+        { "nome": "Biblioteca Digital", "url": "https://bib.univ.edu", "desc": "Acesso a acervo de livros e artigos." },
+        { "nome": "Programa de Tutoria 2026/1", "url": "https://docs.google.com/forms/d/e/1FAIpQLScXhC_SeihADbJyRtYt1mc03d7rMUSh2P64fM7obvJ3fyWkiA/viewform?usp=dialog", "desc": "Suporte acadêmico e orientação." }
+      ]
+    },
+    {
+      "categoria": "Documentação",
+      "icone": "ph-file-text",
+      "cor": "#faa61a",
+      "links": [
+        { "nome": "MDN Web Docs", "url": "https://developer.mozilla.org/", "desc": "Documentação completa para web." },
+        { "nome": "Python Docs", "url": "https://docs.python.org/", "desc": "Guia oficial da linguagem Python." },
+        { "nome": "Overleaf", "url": "https://www.overleaf.com/", "desc": "Editor LaTeX online colaborativo." }
+      ]
+    }
+  ],
+  "horario": [
+    {
+      "dia": "2ª Feira",
+      "aulas": [
+        { "materia": "Prog. de Computadores", "hora": "07:30 - 09:30", "sala": "Sala 206" },
+        { "materia": "Prog. de Computadores", "hora": "09:30 - 11:30", "sala": "Sala 206" },
+        { "materia": "Filosofia e Met. Científica", "hora": "13:30 - 15:30", "sala": "Sala 206" },
+        { "materia": "Filosofia e Met. Científica", "hora": "15:30 - 17:30", "sala": "Sala 206" }
+      ]
+    },
+    {
+      "dia": "3ª Feira",
+      "aulas": [
+        { "materia": "Cálculo I", "hora": "07:30 - 09:30", "sala": "Sala 206" },
+        { "materia": "Cálculo I", "hora": "09:30 - 11:30", "sala": "Sala 206" }
+      ]
+    },
+    {
+      "dia": "4ª Feira",
+      "aulas": [
+        { "materia": "Vetores e Geom. Analítica", "hora": "07:30 - 09:30", "sala": "Sala 206" },
+        { "materia": "Vetores e Geom. Analítica", "hora": "09:30 - 11:30", "sala": "Sala 206" }
+      ]
+    },
+    {
+      "dia": "5ª Feira",
+      "aulas": [
+        { "materia": "Mecânica", "hora": "07:30 - 09:30", "sala": "Sala 206" },
+        { "materia": "Mecânica", "hora": "09:30 - 11:30", "sala": "Sala 206" }
+      ]
+    },
+    {
+      "dia": "6ª Feira",
+      "aulas": [
+        { "materia": "Introdução à Computação", "hora": "07:30 - 09:30", "sala": "Sala 206" },
+        { "materia": "Cálculo I", "hora": "09:30 - 11:30", "sala": "Sala 206" }
+      ]
+    }
+  ]
+}
