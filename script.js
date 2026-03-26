@@ -474,7 +474,7 @@ function renderContribuintes(membros) {
             <div class="contributor-info">
                 <h4>Sua vez?</h4>
                 <p>Contribua com materiais ou código.</p>
-                <a href="https://github.com/blnkDev" target="_blank" class="btn-minimal">
+                <a href="https://github.com/blnkDev/ccpbag2026" target="_blank" class="btn-minimal">
                     Ver Repositório <i class="ph ph-arrow-right"></i>
                 </a>
             </div>
