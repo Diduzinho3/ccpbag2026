@@ -118,22 +118,68 @@ function closeAvisoModal() {
 function renderComunidade(canais) {
     const container = document.getElementById('comunidade-container');
     container.innerHTML = canais.map(canal => {
-        const isWhatsApp = canal.plataforma.toLowerCase() === 'whatsapp';
-        const isGoogle = canal.plataforma.toLowerCase() === 'google agenda';
-        const actionAttr = isWhatsApp ? `onclick="openWhatsAppModal(event, ${JSON.stringify(canal.grupos).replace(/"/g, '&quot;')})"` : '';
-        const href = isWhatsApp ? '#' : canal.link;
+        const platform = canal.plataforma.toLowerCase();
+        const isWhatsApp = platform === 'whatsapp';
+        const isGoogle = platform === 'google agenda';
+        const isMinecraft = platform === 'minecraft';
+        
+        let actionAttr = '';
+        let href = canal.link || '#';
+        let btnText = 'Entrar Agora';
+        let btnIcon = 'ph-arrow-square-out';
+
+        if (isWhatsApp) {
+            actionAttr = `onclick="openWhatsAppModal(event, ${JSON.stringify(canal.grupos).replace(/"/g, '&quot;')})"`;
+            btnText = 'Ver Grupos';
+            btnIcon = 'ph-users';
+        } else if (isGoogle) {
+            btnText = 'Ver Calendário';
+            btnIcon = 'ph-calendar';
+        } else if (isMinecraft) {
+            actionAttr = `onclick="copyIP(event, '${canal.ip}')"`;
+            btnText = 'Copiar IP';
+            btnIcon = 'ph-copy';
+        }
 
         return `
-            <div class="card glass">
-                <i class="ph ${canal.icone}" style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+            <div class="card glass community-card ${isMinecraft ? 'minecraft-card' : ''}">
+                <div class="community-header">
+                    <i class="ph ${canal.icone}" style="font-size: 2rem; color: var(--accent-color);"></i>
+                    ${isMinecraft ? `<span class="version-badge">${canal.versao}</span>` : ''}
+                </div>
                 <h3>${canal.plataforma}</h3>
                 <p>${canal.descricao}</p>
-                <a href="${href}" ${actionAttr} target="${isWhatsApp ? '_self' : '_blank'}" class="btn btn-secondary">
-                    ${isWhatsApp ? 'Ver Grupos' : isGoogle ? 'Ver Calendário' : 'Entrar Agora'}
+                ${isMinecraft ? `<div class="ip-display" id="minecraft-ip-box"><code>${canal.ip}</code></div>` : ''}
+                <a href="${href}" ${actionAttr} target="${isWhatsApp || isMinecraft ? '_self' : '_blank'}" class="btn ${isMinecraft ? 'btn-primary btn-copy-feedback' : 'btn-secondary'}" style="width: 100%; justify-content: center; margin-top: auto;">
+                    <i class="ph ${btnIcon}"></i> ${btnText}
                 </a>
             </div>
         `;
     }).join('');
+}
+
+function copyIP(e, ip) {
+    e.preventDefault();
+    const btn = e.currentTarget;
+    const ipBox = document.getElementById('minecraft-ip-box');
+    
+    navigator.clipboard.writeText(ip).then(() => {
+        // Efeito de Ripple no botão
+        btn.classList.add('animating');
+        btn.classList.add('success');
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<i class="ph ph-check-circle"></i> IP Copiado!';
+        
+        // Efeito visual no box do IP
+        if (ipBox) ipBox.classList.add('copied');
+
+        setTimeout(() => {
+            btn.classList.remove('animating');
+            btn.innerHTML = originalContent;
+            btn.classList.remove('success');
+            if (ipBox) ipBox.classList.remove('copied');
+        }, 2000);
+    });
 }
 
 function openWhatsAppModal(e, grupos) {

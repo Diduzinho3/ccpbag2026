@@ -51,6 +51,13 @@
       "link": "https://calendar.google.com/calendar/u/0?cid=MzE2OTRhZjRjNWYyZTY0M2ZhMTUyMmZhOTY2NDVjOWJkNjZmYjE3NTQwOGQ3YzA4NmE0YmQ0MWVlOWNkNTJlNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t",
       "descricao": "Onde guardamos nossas aulas e eventos de forma geral.",
       "icone": "ph-google-logo"
+    },
+    {
+      "plataforma": "Minecraft",
+      "ip": "football-laptop.gl.joinmc.link",
+      "versao": "1.21.11 (Java)",
+      "descricao": "Nosso servidor de sobrevivência oficial da turma.",
+      "icone": "ph-game-controller"
     }
   ],
   "academico": [
