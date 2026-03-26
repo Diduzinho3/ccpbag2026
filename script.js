@@ -30,6 +30,7 @@ async function fetchData() {
         renderAgenda(data.agenda);
         renderHorario(data.horario);
         renderLinks(allLinks);
+        renderContribuintes(data.contribuintes);
         
         setupAccordions();
     } catch (error) {
@@ -441,6 +442,44 @@ function renderLinks(categorias) {
             </div>
         </div>
     `).join('');
+}
+
+function renderContribuintes(membros) {
+    const container = document.getElementById('contribuintes-container');
+    if (!membros || membros.length === 0) return;
+
+    container.innerHTML = membros.map(m => `
+        <div class="contributor-card glass">
+            <div class="contributor-avatar">
+                <img src="${m.avatar}" alt="${m.nome}">
+            </div>
+            <div class="contributor-info">
+                <h4>${m.nome}</h4>
+                <p class="contributor-role">${m.cargo}</p>
+                <div class="contributor-socials">
+                    <a href="${m.github}" target="_blank" class="social-link github" title="GitHub">
+                        <i class="ph ph-github-logo"></i>
+                    </a>
+                    <a href="${m.instagram}" target="_blank" class="social-link instagram" title="Instagram">
+                        <i class="ph ph-instagram-logo"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    `).join('') + `
+        <div class="contributor-card glass add-contributor-card">
+            <div class="contributor-avatar add-avatar">
+                <i class="ph ph-plus"></i>
+            </div>
+            <div class="contributor-info">
+                <h4>Sua vez?</h4>
+                <p>Contribua com materiais ou código.</p>
+                <a href="https://github.com/blnkDev" target="_blank" class="btn-minimal">
+                    Ver Repositório <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    `;
 }
 
 // Event Delegation para links de cópia
