@@ -1,4 +1,13 @@
-# CCP 2026/1 - Hub Central 🚀
+<p align="center">
+  <img src="./assets/banner-readme.png" alt="Hub Central Banner" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-online-22c55e?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/deploy-vercel-black?style=for-the-badge&logo=vercel" />
+  <img src="https://img.shields.io/badge/turma-CCP%202026%2F1-3b82f6?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/feito%20com-HTML%20%7C%20CSS%20%7C%20JS-f59e0b?style=for-the-badge" />
+</p>
 
 O **Hub Central** é o portal oficial da turma **CCP 2026/1 - Barra do Garças**, criado para reunir em um só lugar **horários, materiais acadêmicos, avisos, links úteis e espaços da comunidade**.
 
@@ -12,7 +21,9 @@ O portal está disponível online e pode ser acessado diretamente pelo navegador
 
 🔗 **[Acessar o Hub Central](https://ccpbag2026.vercel.app/)**
 
-![Preview do Hub Central](./previewimage.png)
+<p align="center">
+  <img src="./assets/previewimage.png" alt="Preview do Hub Central" width="100%" />
+</p>
 
 ---
 
