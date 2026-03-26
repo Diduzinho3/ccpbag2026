@@ -165,8 +165,8 @@
       "cor": "#ed4245",
       "links": [
         { "nome": "SEI UFMT", "url": "https://sei.ufmt.br", "desc": "Sistema Eletrônico de Informações." },
-        { "nome": "Email Coordenação", "url": "mailto:coordenacao@computacao.cua.ufmt.br", "desc": "coordenacao@computacao.cua.ufmt.br" },
-        { "nome": "Telefone/WhatsApp", "url": "tel:+556634020729", "desc": "(66) 3402-0729" }
+        { "nome": "Email Coordenação", "url": "copy:coordenacao@computacao.cua.ufmt.br", "desc": "Clique para copiar o email." },
+        { "nome": "Telefone/WhatsApp", "url": "https://wa.me/556634020729", "desc": "Clique para abrir conversa." }
       ]
     }
   ],

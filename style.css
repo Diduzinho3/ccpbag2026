@@ -717,8 +717,8 @@ body {
     font-weight: 700;
 }
 
-/* Weather Widget */
-.weather-widget {
+/* Info Widget */
+.info-widget {
     margin-top: 48px;
     display: inline-flex;
     align-items: center;
@@ -730,7 +730,7 @@ body {
     animation: fadeInUp 0.8s ease-out 0.8s backwards;
 }
 
-.weather-info {
+.info-item {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -738,7 +738,7 @@ body {
     font-size: 0.9rem;
 }
 
-.weather-info i {
+.info-item i {
     color: var(--accent-color);
 }
 

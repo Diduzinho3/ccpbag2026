@@ -39,10 +39,21 @@ async function fetchData() {
 
 function setupClock() {
     const clockElement = document.getElementById('current-time');
+    const dateElement = document.getElementById('current-date');
+    
     function updateTime() {
         const now = new Date();
+        
+        // Atualiza a Hora
         const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        clockElement.textContent = timeStr;
+        if (clockElement) clockElement.textContent = timeStr;
+        
+        // Atualiza a Data
+        const options = { weekday: 'long', day: 'numeric', month: 'long' };
+        let dateStr = now.toLocaleDateString('pt-BR', options);
+        // Capitaliza a primeira letra do dia da semana
+        dateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+        if (dateElement) dateElement.textContent = dateStr;
     }
     updateTime();
     setInterval(updateTime, 60000);
@@ -163,23 +174,30 @@ function copyIP(e, ip) {
     const btn = e.currentTarget;
     const ipBox = document.getElementById('minecraft-ip-box');
     
-    navigator.clipboard.writeText(ip).then(() => {
-        // Efeito de Ripple no botão
-        btn.classList.add('animating');
-        btn.classList.add('success');
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<i class="ph ph-check-circle"></i> IP Copiado!';
-        
-        // Efeito visual no box do IP
-        if (ipBox) ipBox.classList.add('copied');
+    const showFeedback = (success) => {
+        if (success) {
+            btn.classList.add('animating');
+            btn.classList.add('success');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<i class="ph ph-check-circle"></i> IP Copiado!';
+            if (ipBox) ipBox.classList.add('copied');
 
-        setTimeout(() => {
-            btn.classList.remove('animating');
-            btn.innerHTML = originalContent;
-            btn.classList.remove('success');
-            if (ipBox) ipBox.classList.remove('copied');
-        }, 2000);
-    });
+            setTimeout(() => {
+                btn.classList.remove('animating');
+                btn.innerHTML = originalContent;
+                btn.classList.remove('success');
+                if (ipBox) ipBox.classList.remove('copied');
+            }, 2000);
+        }
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ip)
+            .then(() => showFeedback(true))
+            .catch(() => fallbackCopy(ip, showFeedback));
+    } else {
+        fallbackCopy(ip, showFeedback);
+    }
 }
 
 function openWhatsAppModal(e, grupos) {
@@ -404,18 +422,105 @@ function renderLinks(categorias) {
                 <h3>${cat.categoria}</h3>
             </div>
             <div class="links-list">
-                ${cat.links.map(l => `
-                    <a href="${l.url}" target="_blank" class="link-item">
-                        <div class="link-info">
-                            <span class="link-name">${l.nome}</span>
-                            <span class="link-desc">${l.desc}</span>
-                        </div>
-                        <i class="ph ph-arrow-square-out"></i>
-                    </a>
-                `).join('')}
+                ${cat.links.map(l => {
+                    const isCopy = l.url.startsWith('copy:');
+                    const displayUrl = isCopy ? '#' : l.url;
+                    const copyData = isCopy ? `data-copy="${l.url.replace('copy:', '')}"` : '';
+                    const classList = `link-item ${isCopy ? 'btn-copy-js' : ''}`;
+                    
+                    return `
+                        <a href="${displayUrl}" ${copyData} target="${isCopy ? '_self' : '_blank'}" class="${classList}">
+                            <div class="link-info">
+                                <span class="link-name">${l.nome}</span>
+                                <span class="link-desc">${l.desc}</span>
+                            </div>
+                            <i class="ph ${isCopy ? 'ph-copy' : 'ph-arrow-square-out'}"></i>
+                        </a>
+                    `;
+                }).join('')}
             </div>
         </div>
     `).join('');
+}
+
+// Event Delegation para links de cópia
+document.addEventListener('click', (e) => {
+    const copyBtn = e.target.closest('.btn-copy-js');
+    if (copyBtn) {
+        e.preventDefault();
+        const textToCopy = copyBtn.getAttribute('data-copy');
+        if (textToCopy) {
+            copyToClipboard(e, textToCopy, copyBtn);
+        }
+    }
+});
+
+function copyToClipboard(e, text, targetElement) {
+    const linkItem = targetElement || e.currentTarget;
+    const icon = linkItem.querySelector('i');
+    const nameSpan = linkItem.querySelector('.link-name');
+    
+    if (!nameSpan || !icon) return;
+
+    const originalName = nameSpan.textContent;
+    const originalIconClass = icon.className;
+
+    // Função interna para aplicar o feedback visual
+    const showFeedback = (success) => {
+        if (success) {
+            linkItem.style.borderColor = 'var(--success-color)';
+            linkItem.style.background = 'rgba(59, 165, 92, 0.1)';
+            nameSpan.textContent = 'Copiado com sucesso!';
+            nameSpan.style.color = 'var(--success-color)';
+            icon.className = 'ph ph-check-circle';
+            icon.style.color = 'var(--success-color)';
+        } else {
+            linkItem.style.borderColor = 'var(--danger-color)';
+            nameSpan.textContent = 'Erro ao copiar';
+            nameSpan.style.color = 'var(--danger-color)';
+        }
+
+        setTimeout(() => {
+            linkItem.style.borderColor = 'transparent';
+            linkItem.style.background = 'rgba(255, 255, 255, 0.03)';
+            nameSpan.textContent = originalName;
+            nameSpan.style.color = 'var(--text-primary)';
+            icon.className = originalIconClass;
+            icon.style.color = 'var(--text-secondary)';
+        }, 2000);
+    };
+
+    // Tenta usar a API moderna primeiro
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text)
+            .then(() => showFeedback(true))
+            .catch(() => fallbackCopy(text, showFeedback));
+    } else {
+        fallbackCopy(text, showFeedback);
+    }
+}
+
+function fallbackCopy(text, callback) {
+    try {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        
+        // Assegura que o textarea não seja visível mas esteja no DOM
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "0";
+        document.body.appendChild(textArea);
+        
+        textArea.focus();
+        textArea.select();
+        
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        callback(successful);
+    } catch (err) {
+        console.error('Fallback: Erro ao copiar', err);
+        callback(false);
+    }
 }
 
 function setupAccordions() {
