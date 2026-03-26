@@ -1,1 +1,23 @@
+# IDE e Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos de Sistema
+.DS_Store
+Thumbs.db
+
+# Backup e Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporários
+temp/
+tmp/
+dist/
+build/
+node_modules/
 start.bat
