@@ -12,10 +12,7 @@ O portal está disponível online e pode ser acessado diretamente pelo navegador
 
 🔗 **[Acessar o Hub Central](https://ccpbag2026.vercel.app/)**
 
----
-
-## 🖼️ Preview
-
+![Preview do Hub Central](./previewimage.png)
 
 ---
 
