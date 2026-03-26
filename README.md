@@ -160,4 +160,4 @@ Mais do que um site, a ideia é construir uma plataforma que acompanhe a rotina 
 
 Projeto desenvolvido para a turma **CCP 2026/1 - Barra do Garças**.
 
-Feito com ❤️ pela comunidade da turma.
+Feito com ❤️ pela turma.
