@@ -53,6 +53,12 @@
       "icone": "ph-google-logo"
     },
     {
+      "plataforma": "Instagram",
+      "link": "https://www.instagram.com/computacao.cua",
+      "descricao": "Siga o perfil oficial do curso para novidades e eventos.",
+      "icone": "ph-instagram-logo"
+    },
+    {
       "plataforma": "Minecraft",
       "ip": "football-laptop.gl.joinmc.link",
       "versao": "1.21.11 (Java)",
@@ -152,13 +158,15 @@
         { "nome": "Programa de Tutoria 2026/1", "url": "https://docs.google.com/forms/d/e/1FAIpQLScXhC_SeihADbJyRtYt1mc03d7rMUSh2P64fM7obvJ3fyWkiA/viewform?usp=dialog", "desc": "Suporte acadêmico e orientação." }
       ]
     },
+
     {
-      "categoria": "Documentação",
-      "icone": "ph-file-text",
-      "cor": "#faa61a",
+      "categoria": "Contatos e Info",
+      "icone": "ph-address-book",
+      "cor": "#ed4245",
       "links": [
-        { "nome": "MDN Web Docs", "url": "https://developer.mozilla.org/", "desc": "Documentação completa para web." },
-        { "nome": "Python Docs", "url": "https://docs.python.org/", "desc": "Guia oficial da linguagem Python." }
+        { "nome": "SEI UFMT", "url": "https://sei.ufmt.br", "desc": "Sistema Eletrônico de Informações." },
+        { "nome": "Email Coordenação", "url": "mailto:coordenacao@computacao.cua.ufmt.br", "desc": "coordenacao@computacao.cua.ufmt.br" },
+        { "nome": "Telefone/WhatsApp", "url": "tel:+556634020729", "desc": "(66) 3402-0729" }
       ]
     }
   ],
