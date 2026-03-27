@@ -83,10 +83,10 @@
           "nome": "Cálculo Diferencial e Integral I",
           "professor": "Juan Elmer",
           "materiais": [
-            { "nome": "Aula 1", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064774545412247/Calculo_diferencial_e_integral_I_-_JV_-_Aula_1_2026_1_CC.pdf?ex=69c576ac&is=69c4252c&hm=3a60807ecd6b491ac23db7e8431010e804965dabdb9659b5c3741c25e984b96c&", "tipo": "PDF", "categoria": "Aulas" },
-            { "nome": "Aula 2", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064774835081287/Calculo_diferencial_e_integral_I_-_JV_-_Aula_2_2026_1_CC.pdf?ex=69c576ac&is=69c4252c&hm=914a862b4c228ea757f261e49a21edbd1f24a16597c5be39556d1c5d8fa4e05d&", "tipo": "PDF", "categoria": "Aulas" },
-            { "nome": "Lista 1", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064775128547488/Calculo_diferencial_e_integral_I_-_JV_Lista_01_2026_1_CC.pdf?ex=69c576ac&is=69c4252c&hm=c9c6e87df580a249b7489c4b92fa4263f6e096525eadb02ce28a29ceb6195d65&", "tipo": "PDF", "categoria": "Listas" },
-            { "nome": "Lista 2", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486064775392661524/Calculo_diferencial_e_integral_I_-_JV_Lista_02_2026_1_CC.pdf?ex=69c576ac&is=69c4252c&hm=b572381009a65f4f9ace3afb774f4e64084067c6fe2fbccc0fa979ffb0bd1087&", "tipo": "PDF", "categoria": "Listas" }
+            { "nome": "Aula 1", "url": "https://files.catbox.moe/kz3o7c.pdf", "tipo": "PDF", "categoria": "Aulas" },
+            { "nome": "Aula 2", "url": "https://files.catbox.moe/lrmbhm.pdf", "tipo": "PDF", "categoria": "Aulas" },
+            { "nome": "Lista 1", "url": "https://files.catbox.moe/nrt6qu.pdf", "tipo": "PDF", "categoria": "Listas" },
+            { "nome": "Lista 2", "url": "https://files.catbox.moe/cim4lz.pdf", "tipo": "PDF", "categoria": "Listas" }
           ],
           "resumos": "",
           "status": "Em andamento"
@@ -120,14 +120,14 @@
           "nome": "Filosofia e Metodologia Científica",
           "professor": "Rafael Vital",
           "materiais": [
-            { "nome": "O Pesquisador e a Comunicação Científica", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072878465155207/O_Pesquisador_e_a_Comunicacao_Cientifica.docx?ex=69c57e38&is=69c42cb8&hm=d0b6b26b1716d614b761d76ab02ab0b42ee8f2df7b80dece225fb4ee8ed6f11a&", "tipo": "DOCX", "categoria": "Aula 1" },
-            { "nome": "Tipos de Conhecimento", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072878716944516/Tipos_de_Conhecimento.docx?ex=69c57e38&is=69c42cb8&hm=3f9624fef991937e331a707979ec98f93929bb4eb54c1ac7080d7ee25306dffa&", "tipo": "DOCX", "categoria": "Aula 1" },
-            { "nome": "A Filosofia e a Metodologia da Pesquisa Científica", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072878980923412/A_Filosofia_e_a_Metodologia_da_Pesquisa_Cientifica.docx?ex=69c57e38&is=69c42cb8&hm=c50f6dfd5c945103f33265ce7ba90896ea325e38b7f2779a509e5f28910ca09f&", "tipo": "DOCX", "categoria": "Aula 1" },
-            { "nome": "Atividade em Grupo", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486072879258009682/Atividade_em_Grupo.docx?ex=69c57e38&is=69c42cb8&hm=cacb6a96cada72e37c775f9e7e04a2650006fea4654f663b81115c745152eece&", "tipo": "DOCX", "categoria": "Aula 1" },
-            { "nome": "Linha do Tempo", "url": "https://media.discordapp.net/attachments/1486059603299930142/1486072878301450250/LINHA_DO_TEMPO_DA_FILOSOFIA.jpg?ex=69c57e38&is=69c42cb8&hm=c61118bc5a36493337d3384ffacc24f7a9150039613284e2ba9f798aac436f8c&=&format=webp", "tipo": "JPG", "categoria": "Aula 1" },
-            { "nome": "A PESQUISA E SUAS CLASSIFICAÇÕES", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486075035612348498/A_PESQUISA_E_SUAS_CLASSIFICACOES.docx?ex=69c5803a&is=69c42eba&hm=06363175cf668764d8420474a31022d465d417732a6811e6c11a88731af65028&", "tipo": "DOCX", "categoria": "Aula 2" },
-            { "nome": "Métodos Científicos", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486075245906624573/Metodos_Cientificos.pdf?ex=69c5806c&is=69c42eec&hm=8af66806fff885204614dde09a05c8aa3323128282a34f4dc5f9d474ce0d513e&", "tipo": "PDF", "categoria": "Aula 3" },
-            { "nome": "Etapas da Pesquisa Científica", "url": "https://cdn.discordapp.com/attachments/1486059603299930142/1486075291859288185/AULA_4_Etapas_da_Pesquisa_Cientifica.docx?ex=69c58077&is=69c42ef7&hm=9308bc45601d5a83c0937606a99d875fb7d85ae0ad25192032ec127c1567d331&", "tipo": "DOCX", "categoria": "Aula 4" }
+            { "nome": "O Pesquisador e a Comunicação Científica", "url": "https://docs.google.com/document/d/1WrhP96RU5uTBDBKIYWh01_3-cwS6X5jH/edit?usp=sharing&ouid=105905708338666140795&rtpof=true&sd=true", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "Tipos de Conhecimento", "url": "https://docs.google.com/document/d/17-0qq7BpDlElS3KvhJrZB89NFRxZSQ1s/edit?usp=sharing&ouid=105905708338666140795&rtpof=true&sd=true", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "A Filosofia e a Metodologia da Pesquisa Científica", "url": "https://docs.google.com/document/d/1IxnPaBufdbl9gdm5WVpTeMCHueLgeA9O/edit?usp=sharing&ouid=105905708338666140795&rtpof=true&sd=true", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "Atividade em Grupo", "url": "https://docs.google.com/document/d/1dO3Rja7WcRq8kwjBRFyWus6Rx4a7XdEX/edit?usp=sharing&ouid=105905708338666140795&rtpof=true&sd=true", "tipo": "DOCX", "categoria": "Aula 1" },
+            { "nome": "Linha do Tempo", "url": "https://files.catbox.moe/qwrjtr.jpg", "tipo": "JPG", "categoria": "Aula 1" },
+            { "nome": "A PESQUISA E SUAS CLASSIFICAÇÕES", "url": "https://docs.google.com/document/d/1NURQKAz7C3yOgiCeUfs5_VUgNjixYUvU/edit?usp=sharing&ouid=105905708338666140795&rtpof=true&sd=true", "tipo": "DOCX", "categoria": "Aula 2" },
+            { "nome": "Métodos Científicos", "url": "https://files.catbox.moe/qrqa1b.pdf", "tipo": "PDF", "categoria": "Aula 3" },
+            { "nome": "Etapas da Pesquisa Científica", "url": "https://docs.google.com/document/d/166J-GdUC-ghYifQk0clQ34AufG9HNkSq/edit?usp=sharing&ouid=105905708338666140795&rtpof=true&sd=true", "tipo": "DOCX", "categoria": "Aula 4" }
           ],
           "resumos": "",
           "status": "Em andamento"
