@@ -186,8 +186,8 @@
       "aulas": [
         { "materia": "Prog. de Computadores", "hora": "07:30 - 09:30", "sala": "Sala 206" },
         { "materia": "Prog. de Computadores", "hora": "09:30 - 11:30", "sala": "Sala 206" },
-        { "materia": "Filosofia e Met. Científica", "hora": "13:30 - 15:30", "sala": "Sala 206" },
-        { "materia": "Filosofia e Met. Científica", "hora": "15:30 - 17:30", "sala": "Sala 206" }
+        { "materia": "Metodologia e Redação Científica", "hora": "13:30 - 15:30", "sala": "Sala 206" },
+        { "materia": "Metodologia e Redação Científica", "hora": "15:30 - 17:30", "sala": "Sala 206" }
       ]
     },
     {
