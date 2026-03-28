@@ -165,6 +165,7 @@
       "cor": "#ed4245",
       "links": [
         { "nome": "SEI UFMT", "url": "https://sei.ufmt.br", "desc": "Sistema Eletrônico de Informações." },
+        { "nome": "Bolsas e Auxílios", "url": "https://www.ufmt.br/pro-reitoria/prae/pagina/bolsas-e-auxilios/1387", "desc": "Site sobre Bolsas e Auxílios" },
         { "nome": "Email Coordenação", "url": "copy:coordenacao@computacao.cua.ufmt.br", "desc": "Clique para copiar o email." },
         { "nome": "Telefone/WhatsApp", "url": "https://wa.me/556634020729", "desc": "Clique para abrir conversa." }
       ]
